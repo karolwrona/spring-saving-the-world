@@ -7,10 +7,11 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface PodatnikDAO extends CrudRepository<Podatnik, String> {
+public interface PodatnikDAO extends CrudRepository<Podatnik, Long> {
 
     Optional<Podatnik> findByImieIgnoreCase(String imie);
     List<Podatnik> findAllByNazwiskoIgnoreCaseOrderByNazwisko (String nazwisko);
+    List<Podatnik> findAllBy();
 
 
 }
