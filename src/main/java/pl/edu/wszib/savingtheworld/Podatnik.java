@@ -13,12 +13,24 @@ public class Podatnik {
     @Column(nullable = false)
     String nazwisko;
 
+    @OneToMany
+    Faktura faktury;
+
+
     public Podatnik() {
     }
 
     public Podatnik(String imie, String nazwisko) {
         this.imie = imie;
         this.nazwisko = nazwisko;
+    }
+
+    public Faktura getFaktura() {
+        return faktury;
+    }
+
+    public void setFaktura(Faktura faktura) {
+        this.faktury = faktura;
     }
 
     public Long getPesel() {
