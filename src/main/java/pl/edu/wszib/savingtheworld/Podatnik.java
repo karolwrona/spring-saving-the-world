@@ -1,4 +1,4 @@
-package pl.edu.wszib.savingtheworld.dao;
+package pl.edu.wszib.savingtheworld;
 
 import javax.persistence.*;
 
