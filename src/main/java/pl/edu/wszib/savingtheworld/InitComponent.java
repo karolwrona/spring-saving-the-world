@@ -30,18 +30,14 @@ public class InitComponent {
         podatnikDAO.save(new Podatnik( "Karol7", "Wrona1"));
         podatnikDAO.save(new Podatnik( "Karol8", "Wrona"));*/
 
-        List<Faktura> wszystkie = fakturaDAO.findAll();
-
-        IntStream.range(0,10).forEach(i ->{
-            Faktura faktura = new Faktura(3.50, "Coś"+i);
-            faktura = fakturaDAO.save(faktura);
+        IntStream.range(0,10).forEach(i -> {
+            Podatnik podatnik = new Podatnik("Zdzich"+i, "Krecina"+i*2);
+            Podatnik podatnikSaved = podatnikDAO.save(podatnik);
+            IntStream.range(0,1).forEach(j->{
+                Faktura faktura = new Faktura(2.50+j, "zakupy"+j*3);
+                faktura.setPodatnik(podatnikSaved);
+                faktura = fakturaDAO.save(faktura);
             });
-
-        IntStream.range(0,50).forEach(i -> {
-            Podatnik podatnik = new Podatnik("Zdzich"+i, "Krecina");
-           // podatnik.setFaktura(Arrays.asList(wszystkie.get(i%10), wszystkie.get((i+5)%10)));
-            podatnik = podatnikDAO.save(podatnik);
-            podatnik.getImie();
         });
 
         System.out.println("");

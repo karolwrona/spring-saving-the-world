@@ -1,9 +1,6 @@
 package pl.edu.wszib.savingtheworld;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -13,6 +10,9 @@ public class Faktura {
     Long id;
     double kwota;
     String Tytuł;
+
+    @OneToOne(fetch=FetchType.LAZY, optional = false)
+    Podatnik podatnik;
 
     public Faktura() {}
 
@@ -43,5 +43,9 @@ public class Faktura {
 
     public void setTytuł(String tytuł) {
         Tytuł = tytuł;
+    }
+
+    void setPodatnik(Podatnik podatnik) {
+         this.podatnik = podatnik;
     }
 }
