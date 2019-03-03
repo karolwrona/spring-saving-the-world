@@ -1,6 +1,7 @@
 package pl.edu.wszib.savingtheworld.dao;
 
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -14,5 +15,5 @@ import java.util.List;
 public interface FakturaDAO extends PagingAndSortingRepository<Faktura, Long> {
 
     List<Faktura> findAll();
-    List<Faktura> findAllByPodatnikPesel(Long pesel, Pageable pageable);
+    Page<Faktura> findAllByPodatnikPesel(Long pesel, Pageable pageable);
 }

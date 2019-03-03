@@ -3,8 +3,13 @@ package pl.edu.wszib.savingtheworld;
 
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
+import pl.edu.wszib.savingtheworld.dao.FakturaDAO;
 import pl.edu.wszib.savingtheworld.dao.PodatnikDAO;
+import pl.edu.wszib.savingtheworld.dto.FakturaDTO;
 import pl.edu.wszib.savingtheworld.dto.PodatnikDTO;
 
 import java.util.List;
@@ -19,6 +24,9 @@ public class PodatnikController {
 
     @Autowired
     Mapper mapper;
+
+    @Autowired
+    FakturaDAO fakturaDAO;
 
     @GetMapping
     public PodatnikDTO podatnik(@RequestParam Long pesel) {
@@ -38,5 +46,9 @@ public class PodatnikController {
         Podatnik podatnik = dao.findById(pesel).orElse(null);
         dao.deleteById(pesel);
         return podatnik;
+    }
+    @GetMapping("/faktury")
+    public Page<FakturaDTO> faktury(@RequestParam(name="pesel") Long peselPodatnika,@RequestParam int strona,@RequestParam int rozmiar){
+        return fakturaDAO.findAllByPodatnikPesel(peselPodatnika, PageRequest.of(strona, rozmiar)).map(faktura->mapper.map(faktura, FakturaDTO.class));
     }
 }
