@@ -1,3 +1,4 @@
+/*
 package pl.edu.wszib.savingtheworld;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,8 @@ public class InitComponent {
     FakturaDAO fakturaDAO;
     @PostConstruct
     public void init() {
-        /*podatnikDAO.save(new Podatnik( "Karol", "Wrona"));
+        */
+/*podatnikDAO.save(new Podatnik( "Karol", "Wrona"));
         podatnikDAO.save(new Podatnik( "Karol1", "Wrona8"));
         podatnikDAO.save(new Podatnik( "Karol2", "Wrona7"));
         podatnikDAO.save(new Podatnik( "Karol3", "Wrona6"));
@@ -28,17 +30,20 @@ public class InitComponent {
         podatnikDAO.save(new Podatnik( "Karol5", "Wrona3"));
         podatnikDAO.save(new Podatnik( "Karol6", "Wrona2"));
         podatnikDAO.save(new Podatnik( "Karol7", "Wrona1"));
-        podatnikDAO.save(new Podatnik( "Karol8", "Wrona"));*/
+        podatnikDAO.save(new Podatnik( "Karol8", "Wrona"));*//*
 
-        IntStream.range(0,10).forEach(i -> {
+
+        */
+/*IntStream.range(0,10).forEach(i -> {
             Podatnik podatnik = new Podatnik("Zdzich"+i, "Krecina"+i*2);
             Podatnik podatnikSaved = podatnikDAO.save(podatnik);
             IntStream.range(0,50).forEach(j->{
                 Faktura faktura = new Faktura(2.50+j, "zakupy"+j*3);
                 faktura.setPodatnik(podatnikSaved);
                 faktura = fakturaDAO.save(faktura);
-            });
-        });
+            });*//*
+
+       // });
 
         System.out.println("");
 
@@ -48,3 +53,4 @@ public class InitComponent {
 
     }
 }
+*/

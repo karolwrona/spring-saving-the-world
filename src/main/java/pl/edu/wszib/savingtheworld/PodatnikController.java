@@ -29,8 +29,8 @@ public class PodatnikController {
         return StreamSupport.stream(dao.findAll().spliterator(), false).collect(Collectors.toList());
     }
     @PostMapping
-    public Podatnik zapisz (Podatnik podatnik){
-        return dao.save(mapper.map(podatnik, Podatnik.class));
+    public PodatnikDTO zapisz (PodatnikDTO podatnik){
+        return mapper.map(dao.save(mapper.map(podatnik, Podatnik.class)),PodatnikDTO.class);
 
     }
     @DeleteMapping

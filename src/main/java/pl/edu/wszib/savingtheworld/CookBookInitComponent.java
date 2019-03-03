@@ -1,3 +1,4 @@
+/*
 package pl.edu.wszib.savingtheworld;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,8 @@ public class CookBookInitComponent {
     @PostConstruct
     public void init() {
 
-        for (int i = 0; i < 10; i++) {
+       */
+/* for (int i = 0; i < 10; i++) {
             TypSkladnika typSkladnika = new TypSkladnika();
             typSkladnika.setNazwa("skladnik"+i);
             typSkladnikaDAO.save(typSkladnika);
@@ -47,8 +49,10 @@ public class CookBookInitComponent {
             skladnik.setIlosc(new Random().nextInt(5)+1);
             skladnik.setTypSkladnika(typ);
             skladnik.setPrzepis(przepis);
-            skladnikDAO.save(skladnik);
-        }
+            skladnikDAO.save(skladnik);*//*
+
+        //}
         System.out.printf("");
     }
 }
+*/
