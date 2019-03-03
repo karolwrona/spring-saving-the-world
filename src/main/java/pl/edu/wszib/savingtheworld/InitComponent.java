@@ -33,7 +33,7 @@ public class InitComponent {
         IntStream.range(0,10).forEach(i -> {
             Podatnik podatnik = new Podatnik("Zdzich"+i, "Krecina"+i*2);
             Podatnik podatnikSaved = podatnikDAO.save(podatnik);
-            IntStream.range(0,1).forEach(j->{
+            IntStream.range(0,50).forEach(j->{
                 Faktura faktura = new Faktura(2.50+j, "zakupy"+j*3);
                 faktura.setPodatnik(podatnikSaved);
                 faktura = fakturaDAO.save(faktura);

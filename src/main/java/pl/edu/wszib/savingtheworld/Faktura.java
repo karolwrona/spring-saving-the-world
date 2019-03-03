@@ -9,16 +9,17 @@ public class Faktura {
     @GeneratedValue
     Long id;
     double kwota;
-    String Tytuł;
+    String tytul;
 
-    @OneToOne(fetch=FetchType.LAZY, optional = false)
+    @ManyToOne(fetch=FetchType.EAGER, optional = false)
+    @JoinColumn(name="podatnik_id", nullable = false)
     Podatnik podatnik;
 
     public Faktura() {}
 
     public Faktura(double kwota, String tytuł) {
         this.kwota = kwota;
-        Tytuł = tytuł;
+        this.tytul = tytuł;
     }
 
     public Long getId() {
@@ -38,11 +39,11 @@ public class Faktura {
     }
 
     public String getTytuł() {
-        return Tytuł;
+        return tytul;
     }
 
     public void setTytuł(String tytuł) {
-        Tytuł = tytuł;
+        this.tytul = tytuł;
     }
 
     void setPodatnik(Podatnik podatnik) {

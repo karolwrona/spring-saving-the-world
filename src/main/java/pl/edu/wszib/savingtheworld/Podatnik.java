@@ -1,6 +1,7 @@
 package pl.edu.wszib.savingtheworld;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -13,7 +14,8 @@ public class Podatnik {
     @Column(nullable = false)
     String nazwisko;
 
-
+    @OneToMany(mappedBy = "podatnik", fetch = FetchType.EAGER)
+    List<Faktura> faktury;
     public Podatnik() {
     }
 
@@ -22,6 +24,13 @@ public class Podatnik {
         this.nazwisko = nazwisko;
     }
 
+    public List<Faktura> getFaktury() {
+        return faktury;
+    }
+
+    public void setFaktury(List<Faktura> faktury) {
+        this.faktury = faktury;
+    }
 
     public Long getPesel() {
         return pesel;
