@@ -10,11 +10,9 @@ public class TypSkladnika {
     @Id
     @GeneratedValue
     Long id;
+    @Column(unique = true)
     String nazwa; //unikalna
 
-    public TypSkladnika(String nazwa) {
-        this.nazwa = nazwa;
-    }
 
     public Long getId() {
         return id;

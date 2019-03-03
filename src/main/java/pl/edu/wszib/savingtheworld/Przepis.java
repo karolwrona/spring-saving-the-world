@@ -13,7 +13,7 @@ public class Przepis {
     String tytul;
     @OneToMany(mappedBy ="przepis",fetch = FetchType.EAGER)
     List<Skladnik> skladniki;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ksiazkaKucharska_id")
     KsiazkaKucharska ksiazkaKucharska;
 

@@ -9,7 +9,7 @@ public class KsiazkaKucharska {
     @GeneratedValue
     Long id;
     String tytul;
-    @OneToMany(mappedBy = "ksiazkaKucharska")
+    @OneToMany(mappedBy = "ksiazkaKucharska", fetch = FetchType.EAGER)
     List<Przepis> przepisy;
 
     public Long getId() {

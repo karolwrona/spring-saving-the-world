@@ -1,7 +1,4 @@
 package pl.edu.wszib.savingtheworld;
-
-
-
 import javax.persistence.*;
 
 @Entity

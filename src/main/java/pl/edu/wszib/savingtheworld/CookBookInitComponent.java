@@ -8,6 +8,8 @@ import pl.edu.wszib.savingtheworld.dao.SkladnikDAO;
 import pl.edu.wszib.savingtheworld.dao.TypSkladnikaDAO;
 
 import javax.annotation.PostConstruct;
+import java.util.List;
+import java.util.Random;
 import java.util.stream.IntStream;
 
 @Component
@@ -24,18 +26,29 @@ public class CookBookInitComponent {
     @PostConstruct
     public void init() {
 
-        TypSkladnika typSkladnika1 = new TypSkladnika("Sól");
-        TypSkladnika typSkladnika1Saved = typSkladnikaDAO.save(typSkladnika1);
-        TypSkladnika typSkladnika2 = new TypSkladnika("Pieprz");
-        TypSkladnika typSkladnika2Saved = typSkladnikaDAO.save(typSkladnika2);
-        TypSkladnika typSkladnika3 = new TypSkladnika("ser");
-        TypSkladnika typSkladnika3Saved = typSkladnikaDAO.save(typSkladnika3);
-        TypSkladnika typSkladnika4 = new TypSkladnika("mąka");
-        TypSkladnika typSkladnika4Saved = typSkladnikaDAO.save(typSkladnika4);
+        for (int i = 0; i < 10; i++) {
+            TypSkladnika typSkladnika = new TypSkladnika();
+            typSkladnika.setNazwa("skladnik"+i);
+            typSkladnikaDAO.save(typSkladnika);
+        }
 
-        IntStream.range(0,10).forEach(i->{
-            Skladnik skladnik = new Skladnik(i);
-            Skladnik skladnikSaved = skladnikDAO.save(skladnik);
-        });
+        KsiazkaKucharska ksiazkaKucharska = new KsiazkaKucharska();
+        ksiazkaKucharska.setTytul("KuxharzP");
+        ksiazkaKucharska = ksiazkaKucharskaDAO.save(ksiazkaKucharska);
+
+        Przepis przepis = new Przepis();
+        przepis.setKsiazkaKucharska(ksiazkaKucharska);
+        przepis.setTytul("Grochowa");
+        przepis = przepisDAO.save(przepis);
+
+        List<TypSkladnika> typySkladnikow = typSkladnikaDAO.findAll();
+        for(TypSkladnika typ : typySkladnikow) {
+            Skladnik skladnik = new Skladnik();
+            skladnik.setIlosc(new Random().nextInt(5)+1);
+            skladnik.setTypSkladnika(typ);
+            skladnik.setPrzepis(przepis);
+            skladnikDAO.save(skladnik);
+        }
+        System.out.printf("");
     }
 }
